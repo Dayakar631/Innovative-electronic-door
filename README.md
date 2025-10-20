@@ -25,42 +25,33 @@ Privacy Mode: This allows a user to lock the door from the inside. When Privacy 
 💻 Verilog Implementation
 The various features of the door are implemented as separate modules and are then instantiated in a top-level module. The design uses a mix of gate-level, dataflow, and behavioral modeling.
 
-Password Machine: Implemented using gate-level modeling with XNOR gates and an AND gate.
-
-[Image: Verilog code for Password Machine]
+1)Password Machine: Implemented using gate-level modeling with XNOR gates and an AND gate.
 
 Mod 16 Counter: A 4-bit counter that counts from 0 to 15 (16 states) and resets to 0.
 
-[Image: Verilog code for Mod 16 Counter]
 
-Magic Counter: Designed using behavioral modeling, this module uses the mod_16_counter to count the number of times the gate has been opened.
 
-[Image: Verilog code for Magic Counter]
+2)Magic Counter: Designed using behavioral modeling, this module uses the mod_16_counter to count the number of times the gate has been opened.
+
+
 
 Subtractor: This module finds the difference between two inputs, assigning the value only if the difference is positive.
 
-[Image: Verilog code for Subtractor]
 
-Crowd Factor Calculator: This module calculates the crowd in the room and lights one of the three LEDs. It uses two instances of the mod_16_counter and one instance of the subtractor.
-
-[Image: Verilog code for Crowd Factor Calculator]
+3)Crowd Factor Calculator: This module calculates the crowd in the room and lights one of the three LEDs. It uses two instances of the mod_16_counter and one instance of the subtractor.
 
 Top-Level Module (innovative_door): The main module where all other sub-modules are instantiated to complete the design.
+4) Privacy Mode: This allows a user to lock the door from the inside. When Privacy Mode is on (logic 1), an AND gate ensures the output remains 0, keeping the door closed regardless of password input. When the mode is off (logic 0), a correct password entry will open the door
 
-[Image: Verilog code for Top-Level Module]
 
 Testbench
 A Verilog testbench was implemented to verify, analyze, and simulate the functionality of the complete design. All modes and features were tested by specifying input values in the testbench.
-
-[Image: Testbench Code Snippet 1] [Image: Testbench Code Snippet 2] [Image: Testbench Code Snippet 3] [Image: Testbench Code Snippet 4]
 
 📊 Simulations and Outputs
 Logisim Simulation
 The simulation of the various features of the electronic door as obtained in Logisim.
 
-[Image: Logisim Circuit Simulation]
 
 Verilog Simulation
 The simulation waveform obtained from Verilog. It shows the various modes (privacy, password) and all relevant outputs, including the crowd factor, password match status, and the gate usage count.
 
-[Image: Verilog Simulation Waveform]
